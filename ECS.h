@@ -21,15 +21,6 @@
 #include "System/SystemContext.h"
 
 namespace ECS_SYSTEM {
-// TODO need to use PIMPL
-
-    // template<typename T>
-    // struct ComponentArray : IComponentArray {
-    //     std::vector<std::optional<T>> components;
-    //
-    //     ComponentArray() : components(UTILITIES::MAX_COMPONENT_SIZE) {}
-    // };
-
 
 class ECS { //may need to use 64bit so we never have to check for overflow
     public:
@@ -90,7 +81,7 @@ class ECS { //may need to use 64bit so we never have to check for overflow
         systems.push_back(std::make_unique<SystemType>(std::forward<Args>(args)...));
     }
 
-    void updateSystems(float deltaTime = 1.0f) {
+    void updateSystems(const float deltaTime = 1.0f) {
         totalTime += deltaTime;
         frameCount++;
 

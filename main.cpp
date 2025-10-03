@@ -17,7 +17,7 @@ void testEntityLifecycle() {
     // Add entities
     ecs.addEntity();
     ecs.addEntity();
-    auto id1 = 0;
+    constexpr auto id1 = 0;
     auto id2 = 1;
     assert(ecs.tryGetComponent<Transform>(id1) == nullptr);
 
@@ -29,7 +29,7 @@ void testEntityLifecycle() {
 
 void testComponentAddRemove() {
     auto& ecs = ECS_SYSTEM::ECS::getInstance();
-    auto id = 2;
+    constexpr auto id = 2;
 
     Transform t{10, 20};
     Velocity v{1, 2};
@@ -52,7 +52,7 @@ void testComponentAddRemove() {
 
 void testSystemUpdate() {
     auto& ecs = ECS_SYSTEM::ECS::getInstance();
-    auto id = 3;
+    constexpr auto id = 3;
 
     ecs.addComponent<Transform>(id, Transform{0, 0});
     ecs.addComponent<Velocity>(id, Velocity{1, 1});

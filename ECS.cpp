@@ -5,6 +5,7 @@
 #include "ECS.h"
 
 #include <iostream>
+#include <ranges>
 
 void ECS_SYSTEM::ECS::removeEntity(ENTITY::EntityID id) noexcept
 {
@@ -12,11 +13,10 @@ void ECS_SYSTEM::ECS::removeEntity(ENTITY::EntityID id) noexcept
     entities[id].setInactive();
     hasReusableEntities = true;
 
-    // for (const auto& [type, storage] : components)
-    // {
-    //     //remove components
-    // }
-
+    for (const auto& componentPtr : components | std::views::values)
+    {
+        componentPtr->remove(id);
+    }
 }
 
 void ECS_SYSTEM::ECS::addEntity() noexcept
